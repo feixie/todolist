@@ -14,8 +14,6 @@
 
 
 @property (nonatomic, strong) NSMutableArray *toDoItems;
-@property (nonatomic, weak) ToDoCell *editCell;
-
 
 @end
 
@@ -85,15 +83,29 @@
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return self.toDoItems.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+        
+    CGFloat width = 310;
+    UIFont *font = [UIFont fontWithName:@"Helvetica Neue" size:15];
+    NSDictionary *options = @{ NSFontAttributeName: font };
+    NSString *myString = [self.toDoItems objectAtIndex:indexPath.row];
+
+    CGRect boundingRect = [myString boundingRectWithSize:CGSizeMake(width, NSIntegerMax)
+                                                      options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                   attributes:options context:nil];
+    
+    NSLog(@"height for row %d is %f", indexPath.row, boundingRect.size.height + 25);
+
+    return boundingRect.size.height + 25;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"getting row for %d", indexPath.row);
     ToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ToDoCell" forIndexPath:indexPath];
     cell.toDoTextView.text=[self.toDoItems objectAtIndex:indexPath.row];
     
