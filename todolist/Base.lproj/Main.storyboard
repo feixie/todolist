@@ -38,8 +38,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Edit me" translatesAutoresizingMaskIntoConstraints="NO" id="OFC-dx-Axc" customClass="IndexTextView">
-                                            <rect key="frame" x="6" y="0.0" width="309" height="43"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Edit me" translatesAutoresizingMaskIntoConstraints="NO" id="OFC-dx-Axc" customClass="IndexTextView">
+                                            <rect key="frame" x="5" y="5" width="310" height="38"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -49,6 +49,12 @@
                                             </connections>
                                         </textView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="OFC-dx-Axc" secondAttribute="trailing" constant="5" id="Ace-SR-Lkk"/>
+                                        <constraint firstItem="OFC-dx-Axc" firstAttribute="leading" secondItem="DLU-gw-6z0" secondAttribute="leading" constant="5" id="OFL-6n-qwa"/>
+                                        <constraint firstAttribute="bottom" secondItem="OFC-dx-Axc" secondAttribute="bottom" constant="5" id="x5K-ZR-u1c"/>
+                                        <constraint firstItem="OFC-dx-Axc" firstAttribute="top" secondItem="DLU-gw-6z0" secondAttribute="top" constant="5" id="xGj-tT-P5f"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="toDoTextView" destination="OFC-dx-Axc" id="iTM-BG-cez"/>

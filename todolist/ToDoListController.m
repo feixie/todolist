@@ -41,11 +41,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapTable)];
     [[self tableView] addGestureRecognizer:tapRecognizer];
     
-    self.toDoItems = [[NSMutableArray alloc] init];
+    // Initialize to do items list with persisted data
+    NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *savedArray = [currentDefaults objectForKey:@"mySavedToDoList"];
+    if (savedArray != nil)
+    {
+        NSArray *oldArray = [NSKeyedUnarchiver unarchiveObjectWithData:savedArray];
+        if (oldArray != nil) {
+            self.toDoItems = [[NSMutableArray alloc] initWithArray:oldArray];
+        } else {
+            self.toDoItems = [[NSMutableArray alloc] init];
+        }
+    }
+    //self.toDoItems = [[NSMutableArray alloc] init];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStylePlain target:self action:@selector(onAddButton)];
     
@@ -90,17 +102,6 @@
     
     // Set index on text view so controller can update the corresponding value in array
     cell.toDoTextView.index = indexPath.row;
-    
-    /*if(indexPath.row == self.toDoItems.count) {
-        [cell.toDoTextView setEditable:YES];
-        self.editCell = cell;
-    }
-    else {
-        cell.toDoTextView.text=[self.toDoItems objectAtIndex:indexPath.row];;
-        [cell.toDoTextView setEditable:NO];
-    }*/
-    
-    // Configure the cell...
     
     return cell;
 }
@@ -156,6 +157,33 @@
 
  */
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // If row is deleted, remove it from the list.
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSLog(@"deleting from table");
+        [self.toDoItems removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    
+    NSString *stringToMove = [self.toDoItems objectAtIndex:sourceIndexPath.row];
+    [self.toDoItems removeObjectAtIndex:sourceIndexPath.row];
+    [self.toDoItems insertObject:stringToMove atIndex:destinationIndexPath.row];
+    [self.tableView reloadData];
+
+}
+
+
+- (void)didTapTable
+{
+    [[self tableView] endEditing:YES];
+}
+
 #pragma mark UITextViewDelegate Protocol Methods
 - (void)textViewDidEndEditing:(IndexTextView *)textView {
     NSLog(@"edited at %d", textView.index);
@@ -163,6 +191,10 @@
     [self.view endEditing:YES];
     [self.toDoItems removeObjectAtIndex:textView.index];
     [self.toDoItems insertObject:textView.text atIndex:textView.index];
+    
+    // Persist data
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:self.toDoItems] forKey:@"mySavedToDoList"];
+
     [self.tableView reloadData];
 }
 
@@ -170,18 +202,21 @@
 - (void)onAddButton {
     NSLog(@"inserted at %d", 0);
     [self.toDoItems addObject:@"Edit me"];
-    //[self.toDoItems insertObject:@"Edit me" atIndex:0];
     [self.tableView reloadData];
                               
 }
 
 - (void)onEditButton {
-    
+    //[super setEditing:YES animated:YES];
+    [self.tableView setEditing:YES animated:YES];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(onDoneButton)];
 }
 
-- (void)didTapTable
-{
-    [[self tableView] endEditing:YES];
+-(void)onDoneButton {
+    //[super setEditing:NO animated:YES];
+    [self.tableView setEditing:NO animated:YES];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(onEditButton)];
 }
+
 
 @end

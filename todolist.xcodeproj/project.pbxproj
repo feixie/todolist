@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A64D21F41894ADA3007A6C84 /* IndexTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A64D21F31894ADA3007A6C84 /* IndexTextView.m */; };
+		A6F1F69918978467007ED9D2 /* ToDoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F1F69818978467007ED9D2 /* ToDoListController.m */; };
 		A6F2EC421893774200D5E85A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F2EC411893774200D5E85A /* Foundation.framework */; };
 		A6F2EC441893774200D5E85A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F2EC431893774200D5E85A /* CoreGraphics.framework */; };
 		A6F2EC461893774200D5E85A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F2EC451893774200D5E85A /* UIKit.framework */; };
@@ -21,7 +22,6 @@
 		A6F2EC631893774200D5E85A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F2EC451893774200D5E85A /* UIKit.framework */; };
 		A6F2EC6B1893774200D5E85A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6F2EC691893774200D5E85A /* InfoPlist.strings */; };
 		A6F2EC6D1893774200D5E85A /* todolistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F2EC6C1893774200D5E85A /* todolistTests.m */; };
-		A6F2EC781893778900D5E85A /* ToDoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F2EC771893778900D5E85A /* ToDoListController.m */; };
 		A6F2EC7B189378BF00D5E85A /* ToDoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F2EC7A189378BF00D5E85A /* ToDoCell.m */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +38,7 @@
 /* Begin PBXFileReference section */
 		A64D21F21894ADA3007A6C84 /* IndexTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexTextView.h; sourceTree = "<group>"; };
 		A64D21F31894ADA3007A6C84 /* IndexTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexTextView.m; sourceTree = "<group>"; };
+		A6F1F69818978467007ED9D2 /* ToDoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoListController.m; sourceTree = "<group>"; };
 		A6F2EC3E1893774200D5E85A /* todolist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todolist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F2EC411893774200D5E85A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A6F2EC431893774200D5E85A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,7 +57,6 @@
 		A6F2EC6A1893774200D5E85A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A6F2EC6C1893774200D5E85A /* todolistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = todolistTests.m; sourceTree = "<group>"; };
 		A6F2EC761893778900D5E85A /* ToDoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoListController.h; sourceTree = "<group>"; };
-		A6F2EC771893778900D5E85A /* ToDoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoListController.m; sourceTree = "<group>"; };
 		A6F2EC79189378BF00D5E85A /* ToDoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoCell.h; sourceTree = "<group>"; };
 		A6F2EC7A189378BF00D5E85A /* ToDoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,7 +124,7 @@
 				A6F2EC591893774200D5E85A /* Images.xcassets */,
 				A6F2EC481893774200D5E85A /* Supporting Files */,
 				A6F2EC761893778900D5E85A /* ToDoListController.h */,
-				A6F2EC771893778900D5E85A /* ToDoListController.m */,
+				A6F1F69818978467007ED9D2 /* ToDoListController.m */,
 				A6F2EC79189378BF00D5E85A /* ToDoCell.h */,
 				A6F2EC7A189378BF00D5E85A /* ToDoCell.m */,
 				A64D21F21894ADA3007A6C84 /* IndexTextView.h */,
@@ -260,9 +260,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A64D21F41894ADA3007A6C84 /* IndexTextView.m in Sources */,
-				A6F2EC781893778900D5E85A /* ToDoListController.m in Sources */,
 				A6F2EC521893774200D5E85A /* AppDelegate.m in Sources */,
 				A6F2EC4E1893774200D5E85A /* main.m in Sources */,
+				A6F1F69918978467007ED9D2 /* ToDoListController.m in Sources */,
 				A6F2EC7B189378BF00D5E85A /* ToDoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
