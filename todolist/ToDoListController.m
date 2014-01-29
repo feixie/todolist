@@ -41,6 +41,7 @@
     [super viewDidLoad];
         
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapTable)];
+    tapRecognizer.cancelsTouchesInView = NO;
     [[self tableView] addGestureRecognizer:tapRecognizer];
     
     // Initialize to do items list with persisted data
